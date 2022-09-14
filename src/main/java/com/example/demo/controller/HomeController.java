@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
     @GetMapping("/home")
-    public String home(@RequestParam("first_number") int first_number,@RequestParam("second_number") int second_number, Model model) {
-        model.addAttribute("add", first_number + second_number);
-        model.addAttribute("mul", first_number*second_number);
+    public String home(@RequestParam("number") int number, Model model) {
+        int res= number;
+        if(number > 10){
+            res = number + 100;
+        }
+        else{
+            res =number- 30;
+        }
+        model.addAttribute("res", res);
         return "home";
     }
 }
