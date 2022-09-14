@@ -7,29 +7,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
+
     @GetMapping("/home")
-    public String home(@RequestParam("number") int number, Model model) {
-        String res="ноль";
-        if(number == 1){
-            res = "пон";
+    public String home(@RequestParam("number") int number, @RequestParam("country") int country,
+                       @RequestParam("dis") String dis, Model model) {
+        double res = number * 400;
+        if (country == 3) {
+            res += res * 0.01;
+        } else if (country == 2) {
+            res += res * 0.12;
         }
-        else if(number == 2){
-            res = "вторник";
-        }
-        else if(number == 3){
-            res = "среда";
-        }
-        else if(number == 4){
-            res = "чт";
-        }
-        else if(number == 5){
-            res = "пятница";
-        }
-        else if(number == 6){
-            res = "суббота";
-        }
-        else if(number == 7){
-            res = "воскресенье";
+        if (dis.equals("yes")) {
+            res -= (res * 0.05);
         }
         model.addAttribute("res", res);
         return "home";
