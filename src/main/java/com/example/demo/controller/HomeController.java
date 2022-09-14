@@ -9,12 +9,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
     @GetMapping("/home")
     public String home(@RequestParam("number") int number, Model model) {
-        int res= number;
-        if(number > 10){
-            res = number + 100;
+        String res="ноль";
+        if(number == 1){
+            res = "пон";
         }
-        else{
-            res =number- 30;
+        else if(number == 2){
+            res = "вторник";
+        }
+        else if(number == 3){
+            res = "среда";
+        }
+        else if(number == 4){
+            res = "чт";
+        }
+        else if(number == 5){
+            res = "пятница";
+        }
+        else if(number == 6){
+            res = "суббота";
+        }
+        else if(number == 7){
+            res = "воскресенье";
         }
         model.addAttribute("res", res);
         return "home";
