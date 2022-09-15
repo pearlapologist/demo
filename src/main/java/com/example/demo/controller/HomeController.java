@@ -7,13 +7,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class HomeController {
 
     @GetMapping("/home")
-    public String home(Model model) {
-        String[] array = new String[] { "a", "b", "c", "d"};
-        model.addAttribute("var", array[0]+"+"+ array[1]+", "+array[2]+"+"+array[3]);
+    public String home(@RequestParam("number") int number, Model model) {
+        HashMap<Integer, String> serializedMap = new HashMap<>();
+        serializedMap.put(1, "пон");
+        serializedMap.put(2, "вт");
+        serializedMap.put(3, "ср");
+        serializedMap.put(4, "чт");
+        serializedMap.put(5, "пятница");
+        serializedMap.put(6, "суб");
+        serializedMap.put(7, "вс");
+
+        String var  = serializedMap.get(number);
+        model.addAttribute("map", var);
         return "home";
     }
 
