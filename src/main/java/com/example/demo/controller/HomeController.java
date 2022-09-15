@@ -12,13 +12,8 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        String[] array = new String[] { "Привет,", "мир", "!"};
-        array[0] = "Пока,";
-        String var = " ";
-        for(String word : array){
-           var+=word;
-        }
-        model.addAttribute("array", var);
+        String[] array = new String[] { "a", "b", "c", "d"};
+        model.addAttribute("var", array[0]+"+"+ array[1]+", "+array[2]+"+"+array[3]);
         return "home";
     }
 
