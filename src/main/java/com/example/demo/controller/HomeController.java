@@ -14,18 +14,13 @@ import java.util.Map;
 public class HomeController {
 
     @GetMapping("/home")
-    public String home(@RequestParam("number") int number, Model model) {
-        HashMap<Integer, String> serializedMap = new HashMap<>();
-        serializedMap.put(1, "пон");
-        serializedMap.put(2, "вт");
-        serializedMap.put(3, "ср");
-        serializedMap.put(4, "чт");
-        serializedMap.put(5, "пятница");
-        serializedMap.put(6, "суб");
-        serializedMap.put(7, "вс");
-
-        String var  = serializedMap.get(number);
-        model.addAttribute("map", var);
+    public String home(Model model) {
+        int res =0;
+        int[] array = new int[] {1,2,3,4,5,6,7};
+        for (int num : array) {
+            res += num;
+        }
+        model.addAttribute("res", res);
         return "home";
     }
 
