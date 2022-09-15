@@ -14,14 +14,29 @@ import java.util.Map;
 public class HomeController {
 
     @GetMapping("/home")
-    public String home(@RequestParam("dep_sum") int dep_sum,@RequestParam("dep_months") int dep_months, Model model) {
-       double vr = 0.13/12;
-       vr += 1;
-       vr = Math.pow(vr, dep_months);
-        double res = dep_sum*vr;
-        model.addAttribute("res", res);
-        model.addAttribute("profit", (res-dep_sum)/dep_months);
-        model.addAttribute("dep_sum", dep_sum);
+    public String home(@RequestParam(value = "gum", defaultValue = "n") String gum, @RequestParam(value = "quantity_gum", defaultValue = "0") int quantity_gum,
+                       @RequestParam(value = "bread", defaultValue = "n") String bread, @RequestParam(value = "quantity_bread", defaultValue = "0") int quantity_bread,
+                       @RequestParam(value = "mayo", defaultValue = "n") String mayo, @RequestParam(value = "quantity_mayo", defaultValue = "0") int quantity_mayo,
+                       @RequestParam(value = "kvas", defaultValue = "n") String kvas, @RequestParam(value = "quantity_kvas", defaultValue = "0") int quantity_kvas,
+                       Model model) {
+       double res =0;
+        if (gum.equals("y")) {
+          res+=quantity_gum*10;
+        }
+        if (bread.equals("y")) {
+            res+=quantity_bread*150;
+        }
+        if (mayo.equals("y")) {
+            res+=quantity_mayo*200;
+        }
+        if (kvas.equals("y")) {
+            res+=quantity_kvas*350;
+        }
+        double a = 500-res;
+        if(a>0){
+            model.addAttribute("res", "Платеж прошел, остаток:"+a);
+        }else{
+        model.addAttribute("res", "Недостаточно средств");}
         return "home";
     }
 

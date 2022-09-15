@@ -7,9 +7,28 @@
 <body>
 <h1>Welcome ig</h1>
 <form action="/home" method="get">
-    <input type="text" name="dep_sum" placeholder="Cуммa Дeпoзитa">
-    <input type="text" name="dep_months" placeholder="Кoличecтвo мecяцeв хрaнeния дeнeг в бaнкe">
-    <input type="submit" value="Рассчитать прибыль по ставке 13% гoдoвых">
+    У вас: 500тг<br>
+    <label for="gum">Жвачка(10тг)</label>
+    <input type="checkbox" id="gum" name="gum" value="y">
+    <label for="quantity_gum">Количество :</label>
+    <input type="number" id="quantity_gum" name="quantity_gum" min="0" max="50"><br><br>
+
+    <label for="bread">Хлеб(150тг)</label>
+    <input type="checkbox" id="bread" name="bread" value="y">
+    <label for="quantity_bread">Количество :</label>
+    <input type="number" id="quantity_bread" name="quantity_bread" min="0" max="2"><br><br>
+
+    <label for="mayo">Майонез(200тг)</label>
+    <input type="checkbox" id="mayo" name="mayo" value="y">
+    <label for="quantity_mayo">Количество :</label>
+    <input type="number" id="quantity_mayo" name="quantity_mayo" min="0" max="2"><br><br>
+
+    <label for="kvas">Квас(350тг)</label>
+    <input type="checkbox" id="kvas" name="kvas" value="y">
+    <label for="quantity_kvas">Количество :</label>
+    <input type="number" id="quantity_kvas" name="quantity_kvas" min="0" max="1"><br><br>
+
+    <input type="submit" value="Рассчитать">
 </form>
 
 </body>
