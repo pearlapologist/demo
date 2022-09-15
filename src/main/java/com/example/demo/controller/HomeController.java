@@ -14,13 +14,10 @@ import java.util.Map;
 public class HomeController {
 
     @GetMapping("/home")
-    public String home(Model model) {
-        int res =0;
-        int[] array = new int[] {1,2,3,4,5,6,7};
-        for (int num : array) {
-            res += num;
-        }
-        model.addAttribute("res", res);
+    public String home(Model model) { //''ru                                  'en'
+        String[][] twoDimArray = {{"пон","вт","ср","чт","птн","сб","вск"}, {"mon","tuesday","wednesday","thursday","friday","saturday","sunday"}};
+        model.addAttribute("val1", twoDimArray[0][0]);
+        model.addAttribute("val2", twoDimArray[1][2]);
         return "home";
     }
 
